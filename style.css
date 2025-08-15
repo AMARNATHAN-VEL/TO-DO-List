@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+}
+
+.container {
+  width: 50vw;
+  height: auto;
+  min-height: 80vh;
+  background-color: gray;
+  margin: auto;
+  margin-top: 50px;
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px black;
+}
+
+.title {
+  color: whitesmoke;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px black;
+}
+
+.input-part {
+  display: flex;
+  height: 50px;
+  background-color: white;
+  border-radius: 60px;
+}
+
+.input-part > input {
+  width: 80%;
+  padding-left: 25px;
+  padding-right: 10px;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+}
+
+.input-part > button {
+  border-radius: 50px;
+  width: 20%;
+  padding: 5px;
+  border: none;
+  background-color: green;
+  color: whitesmoke;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.new-task {
+  padding: 30px 0px;
+}
+.new-task > li {
+  list-style-type: none;
+  padding: 10px;
+  border-bottom: 0.5px solid #666161;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.new-task > li > .text,
+.check-text {
+  width: 85%;
+  margin: auto 12px;
+  font-size: 1.1rem;
+  font-weight: 520;
+  color: whitesmoke;
+  user-select: none;
+
+  background-color: gray;
+  border: none;
+  text-align: left;
+}
+.new-task > li > .checked-text {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.new-task > li > .tog-btn {
+  background-color: orange;
+  color: whitesmoke;
+  width: 30px;
+  height: auto;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.new-task > li > .checked-tog-btn {
+  background-color: green;
+}
+
+.new-task > li > .del-btn {
+  height: 25px;
+  width: 80px;
+  background-color: red;
+  border: none;
+  color: whitesmoke;
+  text-wrap: nowrap;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.new-task > li > .del-btn:hover {
+  background-color: #a31010;
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: 93vw;
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+  .input-part > button {
+    font-size: 1rem;
+    /* width: ; */
+  }
+  .del-txt {
+    display: none;
+  }
+  .new-task > li > .del-btn {
+    /* height: 35px; */
+    width: 30px;
+    border-radius: 50%;
+  }
+}
