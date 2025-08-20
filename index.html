@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TO-DO List</title>
+    <title>TO-DO App</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
@@ -16,16 +15,20 @@
   </head>
   <body>
     <section class="container">
-      <header class="title">
-        <h1><i class="fa-solid fa-calendar"></i> TO-DO List</h1>
-      </header>
-      <main>
-        <form class="input-part">
-          <input type="text" placeholder="Add your task..." />
-          <button type="button" onclick="addTask()">Add</button>
-        </form>
-        <ul class="new-task" id="new-task"></ul>
-      </main>
+      <h1>Todo App</h1>
+
+      <form class="input-box">
+        <input type="text" placeholder="Add your new todo..." class="input" />
+        <button type="button" class="input__btn" onclick="addList()">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </form>
+
+      <div id="help" class="help-txt"></div>
+
+      <ul class="list-container" id="list-container"></ul>
     </section>
+
+    <script src="script.js"></script>
   </body>
 </html>
