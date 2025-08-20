@@ -1,88 +1,56 @@
-//Select tags
-const listContainer = document.querySelector("#new-task");
 const input = document.querySelector("input");
+const listContainer = document.getElementById("list-container");
+const helpText = document.getElementById("help");
+let addSaveBtn = document.querySelector("button");
 
-// Main Function
-function addTask() {
+input.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault(); 
+    addList();
+  }
+});
+
+function addList() {
   let inputValue = input.value.trim();
   if (inputValue !== "") {
-    listContainer.prepend(newList());
+    helpText.innerHTML = "";
+    listContainer.prepend(createList(inputValue));
     input.value = "";
     saveData();
   } else {
-    alert("You must type something!");
+    helpText.innerText = "You must type something!";
   }
 }
 
-// ------------------------------
-// New List Creation;
-function newList() {
-  let newList = document.createElement("li");
-  togBtn();
-  text();
-  delBtn();
-  newList.appendChild(togBtn());
-  newList.appendChild(text());
-  newList.appendChild(delBtn());
-  return newList;
+function createList(val) {
+  let list = document.createElement("li");
+  list.className = "list";
+  list.innerHTML = `<i class="fa-solid fa-circle" onclick='tog(this)'></i><span class="txt">${val}</span><i class="fa-solid fa-trash-can" onclick="del(this)"></i>`;
+  return list;
 }
-// toggle button Creation;
-function togBtn() {
-  let togBtn = document.createElement("button");
-  togBtn.className = "tog-btn";
-  togBtn.innerHTML = "";
-  togBtn.setAttribute("onclick", "toggle(this)");
-  return togBtn;
-}
-// Text Creation
-function text() {
-  let text = document.createElement("span");
-  text.className = "text";
-  text.innerText = input.value;
-  return text;
-}
-// Delete button Creation;
-function delBtn() {
-  let delBtn = document.createElement("button");
-  delBtn.className = "del-btn ";
-  delBtn.innerHTML =
-    '<i class="fa-solid fa-trash"></i> <span class="del-txt">Delete</span>';
-  delBtn.setAttribute("onclick", "deleteBtn(this)");
-  return delBtn;
-}
-// --------------------------------
-let isCheck = false;
-function toggle(element) {
-  let text = element.nextElementSibling;
-  if (!isCheck) {
-    text.classList.add("checked-text");
-    element.classList.add("checked-tog-btn");
-    element.innerHTML = '<i class="fa-solid fa-check"></i>';
-    isCheck = true;
+
+function tog(element) {
+  if (element.className == "fa-solid fa-circle") {
+    element.className = "fa-solid fa-circle-check";
+    element.nextElementSibling.classList.toggle("txt-cmpt");
   } else {
-    text.classList.remove("checked-text");
-    element.classList.remove("checked-tog-btn");
-    element.innerHTML = "";
-    isCheck = false;
+    element.className = "fa-solid fa-circle";
+    element.nextElementSibling.classList.toggle("txt-cmpt");
   }
   saveData();
 }
 
-// Delete item
-function deleteBtn(Element) {
-  Element.parentElement.remove();
+function del(element) {
+  element.parentElement.remove();
   saveData();
 }
 
-// ------------------------------------
-// Save data in Local Storage
 function saveData() {
-  localStorage.setItem("data", listContainer.innerHTML);
+  localStorage.setItem("Data", JSON.stringify(listContainer.innerHTML));
 }
-// get from localStorage
+
 function showData() {
-  listContainer.innerHTML = localStorage.getItem("data");
+  listContainer.innerHTML = JSON.parse(localStorage.getItem("Data"));
 }
 
 showData();
-// ----------------------------------
