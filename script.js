@@ -1,7 +1,6 @@
 const input = document.querySelector("input");
 const listContainer = document.getElementById("list-container");
 const helpText = document.getElementById("help");
-let addSaveBtn = document.querySelector("button");
 
 input.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
@@ -54,3 +53,4 @@ function showData() {
 }
 
 showData();
+
